@@ -202,8 +202,22 @@ Unfortunately it's only the "top" sheet - I have three sheets of data in the rep
 
 I'll deal with that later. 
 
-I guess I'll make a little ruby object out of this, and make it storable.
+Hm. I should be able to just somehow `jsonify` this CSV. No logic should be required.
 
-```ruby
-# for each row in CSV, call 
+in `data/top-10-models-by-number.csv` I've got:
+
 ```
+model,number_in_fleet
+Boeing 737-800,826
+Boeing 737-700,579
+Airbus A320ceo,559
+Airbus A321ceo,424
+Boeing 757-200,398
+Bombardier CRJ200,362
+Embraer E175,354
+Airbus A319ceo,347
+Boeing 737-900ER,345
+Cessna 208B,296
+```
+
+Should be like 5 more minutes to return this as a JSON object to a front-end that D3 will be able to interact with. 
