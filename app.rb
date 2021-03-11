@@ -2,11 +2,16 @@ require 'sinatra'
 require 'csv'
 
 get "/" do
+  "hi there. try /api/top-models-by-number"
+end
+
+get "/api/top-models-by-number" do
   load_csv_data
 end
 
 def load_csv_data
   csv = DataGetter.get_top_models_by_number
+  csv.to_json
 end
 
 class DataGetter
@@ -18,6 +23,6 @@ class DataGetter
     rows.map do |row|
       results << row.to_hash
     end
-    results.to_json
+    results
   end
 end
