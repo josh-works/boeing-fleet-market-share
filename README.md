@@ -72,153 +72,6 @@ Embraer
 Airbus
 Boeing
 Bombardier
-Cessna
-Embraer
-Bombardier
-Boeing
-Boeing
-Airbus
-Boeing
-Boeing
-McDonnell Douglas
-Embraer
-Embraer
-Boeing
-Boeing
-McDonnell Douglas
-Boeing
-Airbus
-McDonnell Douglas
-Boeing
-Airbus
-Airbus
-Boeing
-McDonnell Douglas
-Embraer
-Airbus
-Boeing
-Boeing
-Boeing
-Bombardier
-Boeing
-Boeing
-Airbus
-Boeing
-ATR
-Boeing
-Boeing
-ATR
-Boeing
-McDonnell Douglas
-Bombardier
-Lockheed
-Boeing
-McDonnell Douglas
-Airbus
-Boeing
-Bombardier
-Boeing
-Douglas
-Boeing
-Boeing
-McDonnell Douglas
-McDonnell Douglas
-Gulfstream
-Boeing
-Boeing
-Gulfstream
-Convair
-Gulfstream
-Convair
-Boeing
-Gulfstream
-Gulfstream
-Dassault
-Dassault
-Airbus
-Cessna
-Boeing
-CASA
-Dassault
-Cessna
-Embraer
-McDonnell Douglas
-Hawker
-Embraer
-Curtiss
-Pilatus
-Airbus
-Gulfstream
-Dassault
-Cessna
-Hawker
-Cessna
-Gulfstream
-Gulfstream
-Bombardier
-Bombardier
-Bombardier
-Hawker
-Piper
-Saab
-
-ALL
-737-800
-737-700
-A320
-A321
-757-200
-CRJ200
-E175
-A319
-737-900ER
-CRJ900
-C208B
-E170
-CRJ700
-767-300ER
-767-300F
-A300-600
-777-200ER
-717-200
-MD-11F
-ERJ-145
-E190
-747-400F
-737 MAX 8
-MD-90-30
-777F
-A330-200
-MD-88
-787-9
-A320neo
-A321neo
-767-300
-MD-83
-ERJ-140
-A330-300
-777-300ER
-757-300
-767-400ER
-DHC-8-400
-767-200
-787-8
-A220-100
-747-400
-ATR 42
-737-900
-747-8F
-ATR 72
-777-200
-DC-10-10F
-Global Express
-L-382G
-737-400
-DC-10-30F
-A350-900
-737 MAX 9
-Challenger 300
-727-200
 DC-6
 777-200LR
 787-10
@@ -250,17 +103,6 @@ C-46
 PC-12
 A310
 G450
-Falcon 7X
-210
-4,000
-525A CitationJet
-G150
-G-II
-Learjet 45
-Challenger 604
-Learjet 60
-850XP
-PA-32
 SF-340A
 
 7,381
@@ -277,81 +119,9 @@ SF-340A
 238
 233
 197
-158
-155
-120
-113
-111
-108
-92
-80
-64
-58
-53
-52
-49
-47
-47
-47
-45
-42
-42
-40
-40
-40
-37
-37
-36
-35
-32
-28
-27
-25
-24
-24
-21
-19
-14
-14
 14
 13
 13
-13
-13
-12
-11
-11
-10
-10
-9
-8
-8
-7
-6
-6
-6
-6
-6
-5
-5
-4
-4
-4
-4
-3
-3
-3
-3
-3
-3
-2
-2
-2
-2
-2
-1
-1
-1
 1
 1
 1
@@ -368,22 +138,6 @@ SF-340A
 827
 586
 521
-398
-397
-386
-311
-346
-323
-275
-240
-215
-273
-131
-129
-120
-113
-111
-108
 160
 80
 56
@@ -394,74 +148,62 @@ SF-340A
 84
 45
 40
-19
-44
-43
-59
-40
-38
-37
-37
-44
-25
-32
-4
-25
-25
-24
-19
-21
-19
-22
-21
-14
-32
-13
-11
-10
-19
-12
-12
-10
-3
-9
-8
-8
-9
-9
-8
 7
 7
-5
-5
-1
-6
-4
-2
-0
-4
-3
-3
-3
-2
-1
-4
-3
-3
-2
-1
-10
-3
-2
-1
-1
-1
-1
-1
-1
-0
-0
-1
-1
 1 
+```
+
+Ugh. Super ugly. Copy-pasted into a google sheets spreadsheet, available here:
+
+[https://docs.google.com/spreadsheets/d/1YbZDqaZ17ICaTGCx1-ZZ4zkqjUjo3SKyl_V00W6zLuo/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1YbZDqaZ17ICaTGCx1-ZZ4zkqjUjo3SKyl_V00W6zLuo/edit?usp=sharing)
+
+I wonder how to programmatically download/parse a CSV in Google sheets...
+
+https://dev.to/kojikanao/download-files-from-google-drive-with-curl-wget-5e4o
+
+Let's see, we need the `file_id` which seems like:
+
+```
+https://docs.google.com/spreadsheets/d/1YbZDqaZ17ICaTGCx1-ZZ4zkqjUjo3SKyl_V00W6zLuo/edit?usp=sharing
+#                                      ^----------------File ID-------------------^
+
+# 1YbZDqaZ17ICaTGCx1-ZZ4zkqjUjo3SKyl_V00W6zLuo
+```
+
+Oh, and aparently we'll use `wget` instead of `curl`? I don't remember much about `wget`, but looks like it's a "download files from the web" utility. Checks out.
+
+```
+$ wget download_url -O file_name
+```
+
+In this case, download_url is comprised of:
+
+```
+https://drive.google.com/uc?export=download&id=<fileId>
+```
+
+So, let's try:
+
+https://drive.google.com/uc?export=download&id=1YbZDqaZ17ICaTGCx1-ZZ4zkqjUjo3SKyl_V00W6zLuo
+
+Nope, but THIS WORKED!!!
+
+```
+> curl -L 'https://docs.google.com/spreadsheets/d/1YbZDqaZ17ICaTGCx1-ZZ4zkqjUjo3SKyl_V00W6zLuo/export?exportFormat=csv'
+```
+
+w/o the `-L` I was hitting a redirect. Check out this sweet output:
+
+![it works!](images/curl-google-sheets-csv.jpg)
+
+--------------------
+
+Unfortunately it's only the "top" sheet - I have three sheets of data in the report, so I'll see how to handle that later. Maybe I can pass in another parameter for additional sheets. 
+
+I'll deal with that later. 
+
+I guess I'll make a little ruby object out of this, and make it storable.
+
+```ruby
+# for each row in CSV, call 
 ```
