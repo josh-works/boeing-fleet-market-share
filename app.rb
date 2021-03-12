@@ -2,7 +2,7 @@ require 'sinatra'
 require 'csv'
 
 get "/" do
-  "hi there. try /api/top-models-by-number"
+  erb :index
 end
 
 get "/api/top-models-by-number" do

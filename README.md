@@ -15,7 +15,7 @@ Oh, and I want to learn some D3, and this seems like a good way to go.
 - [People & Power - On a wing and a prayer (youtube documentary)](https://www.youtube.com/watch?v=IaWdEtANi-0)
 - [Boeing 737 Next Generation (subject of documentary)](https://en.wikipedia.org/wiki/Boeing_737_Next_Generation)
 
-This will be a sinatra app that takes some data, serves it to a page running D3, and applies a tutorial's worth of effort to "doing something" with that data. I'm more-or-less "live-streaming" this process, so someone else can follow my steps.
+This will be a Sinatra app that takes some data, serves it to a page running D3, and applies a tutorial's worth of effort to "doing something" with that data. I'm more-or-less "live-streaming" this process, so someone else can follow my steps.
 
 ## Scraping Data
 
@@ -221,3 +221,20 @@ Cessna 208B,296
 ```
 
 Should be like 5 more minutes to return this as a JSON object to a front-end that D3 will be able to interact with. 
+
+aaaand, done. Visit [https://salty-mountain-00736.herokuapp.com/api/top-models-by-number](https://salty-mountain-00736.herokuapp.com/api/top-models-by-number), and we've got this CSV coming out as JSON.
+
+I should be able to consume this with D3 now.
+
+## D3 basics
+
+Way back in 2017 [I poked around a little D3](https://josh.works/tour-of-d3) and enjoyed it. Let's do it right this time.
+
+[https://observablehq.com/@d3/learn-d3?collection=@d3/learn-d3](https://observablehq.com/@d3/learn-d3?collection=@d3/learn-d3)
+
+I'm starting there, reading along and exploring.
+
+Ok, making this site adhere slightly better to what semantic HTML is supposed to look like, here: 
+
+`713b1d5`
+
