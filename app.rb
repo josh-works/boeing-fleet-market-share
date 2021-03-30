@@ -5,6 +5,16 @@ get "/" do
   erb :index
 end
 
+post "/sponsors" do
+  File.open("production.log", "a") do |file|
+    file.puts params
+  end
+end
+
+get "/sponsors" do
+  File.open("production.log").read
+end
+
 get "/api/top-models-by-number" do
   load_csv_data
 end
